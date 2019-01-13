@@ -1,0 +1,12 @@
+delimiter //
+CREATE TRIGGER ins_user AFTER INSERT ON users
+       declare n1 varchar(20);
+       declare d1 varchar(10);
+       dedclare rdate date;
+       begin
+       n1:=:new.name;
+       d1:=:new.domain_name
+       rdate:=NOW();
+       insert into newsfeed values(d1,n1,rdate);
+       end;
+//
